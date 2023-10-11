@@ -1,7 +1,7 @@
 package sorting;
 
+import sorting.algorithms.mergesort.MergeSort;
 import sorting.interfaces.Sorting;
-import sorting.algorithms.quicksort.QuickSort;
 import sorting.utils.Utils;
 
 import java.util.Arrays;
@@ -11,7 +11,7 @@ public class SortingRunner {
 
         int[] array = Utils.generateArray(10, -10, 5);
         System.out.println(Arrays.toString(array));
-        Sorting sorting = new QuickSort(array);
+        Sorting sorting = new MergeSort(array);
         sorting.sort();
         System.out.println(Arrays.toString(array));
     }
