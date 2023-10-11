@@ -1,4 +1,4 @@
-package sorting.algorithms.greedy.backpack;
+package greedy.backpack;
 
 import java.util.List;
 import java.util.TreeSet;

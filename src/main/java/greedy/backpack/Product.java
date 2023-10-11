@@ -1,4 +1,4 @@
-package sorting.algorithms.greedy.backpack;
+package greedy.backpack;
 
 public class Product {
 
