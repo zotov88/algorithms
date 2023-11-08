@@ -1,5 +1,7 @@
 package sorting.utils;
 
+import sorting.interfaces.Sorting;
+
 import java.util.Random;
 
 public class Utils {
@@ -19,6 +21,12 @@ public class Utils {
             array[i] = random.nextInt(max - min + 1) + min;
         }
         return array;
+    }
+
+    public static void speedTest(Sorting sorting) {
+        long time = System.currentTimeMillis();
+        sorting.sort();
+        System.out.printf("%s : %d\n", sorting.getClass().getSimpleName(), (System.currentTimeMillis() - time));
     }
 
     
