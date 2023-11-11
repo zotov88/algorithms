@@ -4,9 +4,8 @@ import sorting.algorithms.bubblesort.BubbleSort;
 import sorting.algorithms.mergesort.MergeSort;
 import sorting.algorithms.quicksort.QuickSort;
 import sorting.interfaces.Sorting;
-import sorting.utils.Utils;
+import utils.Utils;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class SortingRunner {
@@ -17,7 +16,7 @@ public class SortingRunner {
 
     public static void main(String[] args) {
 
-        int[] array1 = Utils.generateArray(CAPACITY, FROM, TO);
+        int[] array1 = Utils.generateRandomArray(CAPACITY, FROM, TO);
         int[] array2 = new int[CAPACITY];
         int[] array3 = new int[CAPACITY];
         System.arraycopy(array1, 0, array2, 0, CAPACITY);

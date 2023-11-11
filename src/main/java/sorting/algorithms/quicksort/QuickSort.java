@@ -1,7 +1,7 @@
 package sorting.algorithms.quicksort;
 
 import sorting.interfaces.Sorting;
-import sorting.utils.Utils;
+import utils.Utils;
 
 public class QuickSort implements Sorting {
 
