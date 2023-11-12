@@ -1,12 +1,10 @@
 package sorting;
 
-import sorting.algorithms.BubbleSort;
-import sorting.algorithms.MergeSort;
-import sorting.algorithms.QuickSort;
-import sorting.algorithms.SelectionSort;
+import sorting.algorithms.*;
 import sorting.interfaces.Sorting;
 import utils.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SortingRunner {
@@ -27,10 +25,16 @@ public class SortingRunner {
                 new QuickSort(arrays[3])
         );
 
+        List<Thread> threadList = new ArrayList<>();
+
         for (Sorting sorting : sortingList) {
-            Thread t = new Thread(() -> Utils.speedTest(sorting));
-            t.start();
-            t.join();
+            Thread thread = new Thread(new MyThread(sorting));
+            thread.start();
+            threadList.add(thread);
+        }
+
+        for (Thread thread : threadList) {
+            thread.join();
         }
 
         Utils.printArrays(arrays);

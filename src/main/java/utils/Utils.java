@@ -1,8 +1,11 @@
 package utils;
 
+import sorting.MyThread;
 import sorting.interfaces.Sorting;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class Utils {
@@ -47,5 +50,15 @@ public class Utils {
         for (int[] array : arrays) {
             System.out.println(Arrays.toString(array));
         }
+    }
+
+    public static List<Thread> createStartedThreadList(List<Sorting> sortingList) {
+        List<Thread> threadList = new ArrayList<>();
+        for (Sorting sorting : sortingList) {
+            Thread thread = new Thread(new MyThread(sorting));
+            thread.start();
+            threadList.add(thread);
+        }
+        return threadList;
     }
 }
