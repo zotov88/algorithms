@@ -1,13 +1,9 @@
-package sorting.algorithms.bubblesort;
+package sorting.algorithms;
 
-import sorting.interfaces.Sorting;
-
-public class BubbleSort implements Sorting {
-
-    private final int[] array;
+public class BubbleSort extends AbstractSort {
 
     public BubbleSort(int[] array) {
-        this.array = array;
+        super(array);
     }
 
     @Override
@@ -24,11 +20,5 @@ public class BubbleSort implements Sorting {
                 break;
             }
         }
-    }
-
-    private void swap(int i, int j) {
-        int tmp = array[i];
-        array[i] = array[j];
-        array[j] = tmp;
     }
 }

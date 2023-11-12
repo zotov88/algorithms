@@ -1,13 +1,9 @@
-package sorting.algorithms.mergesort;
+package sorting.algorithms;
 
-import sorting.interfaces.Sorting;
-
-public class MergeSort implements Sorting {
-
-    private final int[] array;
+public class MergeSort extends AbstractSort {
 
     public MergeSort(int[] array) {
-        this.array = array;
+        super(array);
     }
 
     @Override

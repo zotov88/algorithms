@@ -1,8 +1,9 @@
 package sorting;
 
-import sorting.algorithms.bubblesort.BubbleSort;
-import sorting.algorithms.mergesort.MergeSort;
-import sorting.algorithms.quicksort.QuickSort;
+import sorting.algorithms.BubbleSort;
+import sorting.algorithms.MergeSort;
+import sorting.algorithms.QuickSort;
+import sorting.algorithms.SelectionSort;
 import sorting.interfaces.Sorting;
 import utils.Utils;
 
@@ -10,31 +11,28 @@ import java.util.List;
 
 public class SortingRunner {
 
-    final static int CAPACITY = 1_000_000;
-    final static int FROM = -1000;
-    final static int TO = 1000;
+    final static int CAPACITY = 10_000;
+    final static int FROM = -100;
+    final static int TO = 100;
+    final static int COUNT_ARRAYS = 4;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        int[] array1 = Utils.generateRandomArray(CAPACITY, FROM, TO);
-        int[] array2 = new int[CAPACITY];
-        int[] array3 = new int[CAPACITY];
-        System.arraycopy(array1, 0, array2, 0, CAPACITY);
-        System.arraycopy(array1, 0, array3, 0, CAPACITY);
-//        System.out.println(Arrays.toString(array1));
+        int[][] arrays = Utils.generateTheSameRandomArrays(CAPACITY, FROM, TO, COUNT_ARRAYS);
 
-        List<Sorting> sortings = List.of(
-                new MergeSort(array1),
-                new QuickSort(array2),
-                new BubbleSort(array3)
+         List<Sorting> sortingList = List.of(
+                new BubbleSort(arrays[0]),
+                new SelectionSort(arrays[1]),
+                new MergeSort(arrays[2]),
+                new QuickSort(arrays[3])
         );
 
-        for (Sorting sorting : sortings) {
-            Utils.speedTest(sorting);
+        for (Sorting sorting : sortingList) {
+            Thread t = new Thread(() -> Utils.speedTest(sorting));
+            t.start();
+            t.join();
         }
 
-//        System.out.println(Arrays.toString(array1));
-//        System.out.println(Arrays.toString(array2));
-//        System.out.println(Arrays.toString(array3));
+        Utils.printArrays(arrays);
     }
 }

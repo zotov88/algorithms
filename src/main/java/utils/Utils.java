@@ -2,11 +2,13 @@ package utils;
 
 import sorting.interfaces.Sorting;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Utils {
 
-    private Utils() {}
+    private Utils() {
+    }
 
     public static void swap(int[] array, int from, int to) {
         int tmp = array[from];
@@ -23,10 +25,27 @@ public class Utils {
         return array;
     }
 
+    public static int[][] generateTheSameRandomArrays(int length, int min, int max, int countArrays) {
+        int[][] arrays = new int[countArrays][length];
+        int[] array = generateRandomArray(length, min, max);
+        arrays[0] = array;
+        for (int i = 1; i < countArrays; i++) {
+            int[] newArray = new int[length];
+            System.arraycopy(array, 0, newArray, 0, length);
+            arrays[i] = newArray;
+        }
+        return arrays;
+    }
+
     public static void speedTest(Sorting sorting) {
         long time = System.currentTimeMillis();
         sorting.sort();
-        System.out.printf("%s : %d\n", sorting.getClass().getSimpleName(), (System.currentTimeMillis() - time));
+        System.out.printf("%s: %d\n", sorting.getClass().getSimpleName(), (System.currentTimeMillis() - time));
     }
-    
+
+    public static void printArrays(int[][] arrays) {
+        for (int[] array : arrays) {
+            System.out.println(Arrays.toString(array));
+        }
+    }
 }

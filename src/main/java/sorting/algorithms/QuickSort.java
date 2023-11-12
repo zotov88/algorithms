@@ -1,14 +1,9 @@
-package sorting.algorithms.quicksort;
+package sorting.algorithms;
 
-import sorting.interfaces.Sorting;
-import utils.Utils;
-
-public class QuickSort implements Sorting {
-
-    private final int[] array;
+public class QuickSort extends AbstractSort {
 
     public QuickSort(int[] array) {
-        this.array = array;
+        super(array);
     }
 
     @Override
@@ -16,7 +11,7 @@ public class QuickSort implements Sorting {
         quickSort(array, 0, array.length - 1);
     }
 
-    private static void quickSort(int[] array, int from, int to) {
+    private void quickSort(int[] array, int from, int to) {
         if (from < to) {
             int div = partition(array, from, to);
             quickSort(array, from, div - 1);
@@ -24,7 +19,7 @@ public class QuickSort implements Sorting {
         }
     }
 
-    private static int partition(int[] array, int from, int to) {
+    private int partition(int[] array, int from, int to) {
         int leftIndex = from;
         int rightIndex = to;
         int pivot = array[(from + to) / 2];
@@ -37,7 +32,7 @@ public class QuickSort implements Sorting {
                 rightIndex--;
             }
             if (leftIndex <= rightIndex) {
-                Utils.swap(array, leftIndex, rightIndex);
+                swap(leftIndex, rightIndex);
                 leftIndex++;
                 rightIndex--;
             }
